@@ -1,0 +1,67 @@
+name: Validate database
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Import & test (${{ matrix.db }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        db: ["mysql:8.0", "mariadb:10.11"]
+
+    services:
+      db:
+        image: ${{ matrix.db }}
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MARIADB_ROOT_PASSWORD: root
+        ports: ["3306:3306"]
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -proot || mariadb-admin ping -h 127.0.0.1 -proot"
+          --health-interval=5s --health-timeout=5s --health-retries=20
+
+    env:
+      MYSQL: mysql -h 127.0.0.1 -P 3306 -uroot -proot --default-character-set=utf8mb4
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Import schema and data
+        run: $MYSQL < sql/tdb_tiere.sql
+
+      - name: Check row counts
+        run: |
+          $MYSQL -N tdb_tiere -e "
+            SELECT CONCAT('klasse=',     (SELECT COUNT(*) FROM klasse)),
+                   CONCAT('kontinent=',  (SELECT COUNT(*) FROM kontinent)),
+                   CONCAT('ernaehrung=', (SELECT COUNT(*) FROM ernaehrung)),
+                   CONCAT('bedrohung=',  (SELECT COUNT(*) FROM bedrohung)),
+                   CONCAT('tierart=',    (SELECT COUNT(*) FROM tierart)),
+                   CONCAT('lebensraum=', (SELECT COUNT(*) FROM lebensraum));" | tee counts.txt
+          grep -q "klasse=4"      counts.txt
+          grep -q "kontinent=7"   counts.txt
+          grep -q "ernaehrung=3"  counts.txt
+          grep -q "bedrohung=4"   counts.txt
+          grep -q "tierart=10"    counts.txt
+          grep -q "lebensraum=10" counts.txt
+
+      - name: Check referential integrity (foreign keys enforced)
+        run: |
+          if $MYSQL tdb_tiere -e "INSERT INTO tierart VALUES (99,'x','x','x','x',99,1,1);" 2>/dev/null; then
+            echo "Foreign key on Klasse_ID was NOT enforced"; exit 1
+          fi
+          echo "OK - invalid Klasse_ID rejected by FOREIGN KEY constraint"
+
+      - name: Run sample queries
+        run: $MYSQL -t tdb_tiere < sql/queries.sql
+
+      - name: Verify lossless decomposition (3NF -> Ausgangstabelle)
+        run: |
+          pip install --quiet openpyxl
+          $MYSQL -B -N tdb_tiere -e "SELECT * FROM v_ausgangstabelle" > view.tsv
+          python scripts/verify_roundtrip.py view.tsv

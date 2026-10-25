@@ -1,0 +1,11 @@
+Lebensraum_ID,Tier_ID,Lebensraum,Kontinent_ID,Koerpergroesse_cm,Gewicht_kg,Quelle
+1,1,Savanne,1,200,190,IUCN Red List 2023
+2,2,Savanne/Wald,1,330,5000,WWF 2023
+3,3,Ozean,5,600,1100,IUCN Red List 2023
+4,4,Antarktis,6,120,40,BirdLife 2022
+5,5,Ozean/Strand,5,150,200,IUCN Red List 2023
+6,6,Wald,2,280,300,WWF 2023
+7,7,Regenwald,1,175,200,IUCN Red List 2023
+8,8,Tundra,7,60,4,IUCN Red List 2022
+9,9,Fluss/Ozean,3,75,4,NOAA 2023
+10,10,Tropen,2,250,90,IUCN Red List 2023

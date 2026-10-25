@@ -1,0 +1,5 @@
+Bedrohungs_ID,Bedrohungsstatus_DE,Bedrohungsstatus_EN,Bedrohungsstatus_FR,IUCN_Kuerzel
+1,Nicht gefährdet,Least Concern,Préoccupation mineure,LC
+2,Gefährdet,Vulnerable,Vulnérable,VU
+3,Stark gefährdet,Endangered,En danger,EN
+4,Vom Aussterben bedroht,Critically Endangered,En danger critique,CR

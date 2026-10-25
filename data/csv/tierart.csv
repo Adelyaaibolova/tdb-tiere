@@ -1,0 +1,11 @@
+Tier_ID,Tierart_DE,Tierart_EN,Tierart_FR,Tierart_LA,Klasse_ID,Ernaehrung_ID,Bedrohungs_ID
+1,Löwe,Lion,Lion,Panthera leo,1,1,2
+2,Elefant,Elephant,Éléphant,Loxodonta africana,1,2,2
+3,Weißer Hai,Great White Shark,Grand requin blanc,Carcharodon carcharias,2,1,2
+4,Kaiserpinguin,Emperor Penguin,Manchot empereur,Aptenodytes forsteri,3,1,1
+5,Grüne Meeresschildkröte,Green Sea Turtle,Tortue verte,Chelonia mydas,4,2,2
+6,Amurtiger,Amur Tiger,Tigre de l'Amour,Panthera tigris altaica,1,1,3
+7,Gorilla,Gorilla,Gorille,Gorilla beringei,1,2,3
+8,Polarfuchs,Arctic Fox,Renard arctique,Vulpes lagopus,1,3,1
+9,Pazifischer Lachs,Pacific Salmon,Saumon du Pacifique,Oncorhynchus mykiss,2,3,1
+10,Komododrache,Komodo Dragon,Dragon de Komodo,Varanus komodoensis,4,1,2

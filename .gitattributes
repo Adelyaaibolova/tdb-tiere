@@ -1,0 +1,7 @@
+*.sql  text eol=lf
+*.csv  text eol=lf
+*.md   text eol=lf
+*.py   text eol=lf
+*.yml  text eol=lf
+*.xlsx binary
+*.docx binary
