@@ -8,12 +8,10 @@
 ![phpMyAdmin](https://img.shields.io/badge/phpMyAdmin-XAMPP-F89C0E?logo=phpmyadmin&logoColor=white)
 ![Languages](https://img.shields.io/badge/terms-DE%20%C2%B7%20EN%20%C2%B7%20FR%20%C2%B7%20LA-6f42c1)
 ![Normal form](https://img.shields.io/badge/schema-3NF-success)
-![Grade](https://img.shields.io/badge/grade-100%2F100-brightgreen)
 
 > 🎓 **Data Modelling**, Assignment A3 · European Master in Lexicography (EMLex), 2nd semester\
 > 🏛️ **Université de Lorraine**, Nancy, France\
 > 👩‍🏫 Professor **Laura Giacomini**\
-> 🏆 Grade: **100 / 100**\
 > ✍️ Adelya Aibolova · April 2026
 
 ---
@@ -342,7 +340,7 @@ This project was completed for the course **Data Modelling** in the second semes
 | **University** | Université de Lorraine, Nancy, France 🇫🇷 |
 | **Professor** | Laura Giacomini |
 | **Task** | *Modellierung einer terminologischen Datenbank in XAMPP*: design, normalize and implement a multilingual terminological database |
-| **Grade** | 🏆 **100 / 100** |
+| **Grade** | 100 / 100 |
 
 The full project report (in German) is in [`docs/Bericht_TDB_Tiere.docx`](docs/Bericht_TDB_Tiere.docx).
 
